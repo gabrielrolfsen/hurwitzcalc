@@ -1,0 +1,35 @@
+.coef-input{
+	width: 67px;
+}
+
+.coef{
+	font-weight: bold;
+}
+
+.coef-span::after{
+	content: '+';
+}
+
+.coef-span:last-child::after{
+	content: '';
+}
+
+.expression{
+	margin-top: 20px;
+}
+
+.table .item{
+	border: 1px black dashed;
+	width: 50px;
+	display: inline-block;
+	text-align: center;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	padding: 0px 5px 0px 5px;
+}
+
+.first-col{
+	background: #cecece;
+	font-weight: bold;
+}

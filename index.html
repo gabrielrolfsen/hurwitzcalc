@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="calcApp">
+<head>
+	<title>Routh-Hurwitz Calculator</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/script.js"></script>
+</head>
+<body>
+    <div class="container" ng-controller="CalcController as calc">
+      <h1>Calculadora Routh-Hurwitz</h1>
+      <div class="row">
+        <span class="col-xs-3 col-md-1 input-group" ng-repeat="todo in calc.todos">
+          <label class="checkbox">s<sup>{{todo.id}}</sup></label>
+              <input class="coef-input form-control" maxlength="5" type="textbox" ng-model="todo.coef" id="s{{todo.id}}">        
+        </span>
+      </div>
+      <div class="row expression">
+      	Express&atilde;o:
+        <span class="coef-span" ng-repeat="todo in calc.todos">
+          {{todo.coef}}<span class="coef">s<sup>{{todo.id}}</sup></span>
+        </span>
+      </div>
+      <div class="table">
+      	<h3> Tabela </h3>
+        <div ng-repeat="line in calc.table">
+        	<span class="first-col">s<sup>{{calc.table.length - 1 - $index}}</sup></span>
+        	<span class="item" ng-repeat="item in line track by $index" ng-if="$index < line.length -1">
+        		{{item}}
+        	</span>
+        </div>
+        {{calc.isStable}}
+      </div>
+      	<input ng-click="calc.addTerm()" class="btn btn-primary" type="submit" value="Adicionar Termo">
+      	<input ng-click="calc.removeTerm()" class="btn btn-danger" type="submit" value="Remover Termo">
+        <input ng-click="calc.generateTable()" class="btn btn-success" type="submit" value="Gerar Tabela">
+    </div>
+</body>
+</html>
